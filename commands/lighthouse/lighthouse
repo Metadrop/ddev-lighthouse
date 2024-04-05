@@ -6,6 +6,6 @@
 ## Usage: lighthouse 
 ## Example: "ddev lighthouse"
 ## ExecRaw: true
-lighthouse lhci autorun || true
-lighthouse sh -c 'tar -cf - *.json *.html' | tar -xvf - -C reports/lighthouse/
+lighthouse --no-enable-error-reporting lhci autorun || true
+lighthouse --no-enable-error-reporting sh -c 'tar -cf - *.json *.html' | tar -xvf - -C reports/lighthouse/
 ls -l reports/lighthouse/

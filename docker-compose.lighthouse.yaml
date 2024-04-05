@@ -14,5 +14,5 @@ services:
       com.ddev.approot: $DDEV_APPROOT
 
     volumes:
-    - ./tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
+    - ../tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
     - .:/mnt/ddev_config:ro
