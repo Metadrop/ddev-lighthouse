@@ -1,0 +1,17 @@
+#ddev-generated
+services:
+  lighthouse:
+    container_name: ddev-${DDEV_SITENAME}-lighthouse
+    image: patrickhulce/lhci-client:latest
+    command: tail -F /dev/null
+    networks: [default, ddev_default]
+    restart: "no"
+    shm_size: 1gb
+    cap_add:
+      - SYS_ADMIN
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+
+    volumes:
+    - ./tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
