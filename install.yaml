@@ -1,4 +1,4 @@
-name: lighthouse
+name: ddev-lighthouse
 project_files:
 - docker-compose.lighthouse.yaml
 - commands/lighthouse/lighthouse
