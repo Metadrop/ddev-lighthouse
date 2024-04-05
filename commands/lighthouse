@@ -1,0 +1,11 @@
+#!/bin/bash
+
+#ddev-generated
+
+## Description: Run lighthouse and prepare reports
+## Usage: lighthouse 
+## Example: "ddev lighthouse"
+## ExecRaw: true
+lighthouse lhci autorun || true
+lighthouse sh -c 'tar -cf - *.json *.html' | tar -xvf - -C reports/lighthouse/
+ls -l reports/lighthouse/
