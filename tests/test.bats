@@ -14,7 +14,7 @@ setup() {
 health_checks() {  
   output=$(ddev exec -s lighthouse lhci healthcheck)
   # Check if the output contains "Healthcheck passed!"
-  [ "$output" = "Healthcheck passed!" ] 
+  [[ $output == *"Healthcheck passed"* ]] 
 }
 
 teardown() {
