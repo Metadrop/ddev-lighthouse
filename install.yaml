@@ -8,6 +8,7 @@ project_files:
 
 post_install_actions:
  - test -d ${DDEV_APPROOT}/tests/functional/lighthouse || mkdir -p ${DDEV_APPROOT}/tests/functional/lighthouse
+ - test -d ${DDEV_APPROOT}/reports/lighthouse || mkdir -p ${DDEV_APPROOT}/reports/lighthouse
  - test -f "${DDEV_APPROOT}/tests/functional/lighthouse/lighthouserc.js" || cp lighthouse/lighthouserc.js.example ${DDEV_APPROOT}/tests/functional/lighthouse/lighthouserc.js 
 
  - echo "Install finished. Please adjust tests in ${DDEV_APPROOT}/tests/functional/lighthouse/lighthouserc.js."
