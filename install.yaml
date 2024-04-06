@@ -1,4 +1,13 @@
 name: ddev-lighthouse
+
+
 project_files:
 - docker-compose.lighthouse.yaml
 - commands/lighthouse/lighthouse
+- lighthouse/lighthouserc.js.example
+
+post_install_actions:
+ - test -d ${DDEV_APPROOT}/tests/functional/lighthouse || mkdir -p ${DDEV_APPROOT}/tests/functional/lighthouse
+ - test -f "${DDEV_APPROOT}/tests/functional/lighthouse/lighthouserc.js" || cp lighthouse/lighthouserc.js.example ${DDEV_APPROOT}/tests/functional/lighthouse/lighthouserc.js 
+
+ - echo "Install finished. Please adjust tests in ${DDEV_APPROOT}/tests/functional/lighthouse/lighthouserc.js."

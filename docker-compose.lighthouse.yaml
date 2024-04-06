@@ -17,5 +17,6 @@ services:
     environment:
       DDEV_HOSTNAME: $DDEV_HOSTNAME
     volumes:
+    - ../reports/lighthouse:/home/lhci/reports/export
     - ../tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
     - .:/mnt/ddev_config:ro
