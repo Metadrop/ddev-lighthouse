@@ -4,6 +4,7 @@ name: ddev-lighthouse
 project_files:
 - docker-compose.lighthouse.yaml
 - commands/lighthouse/lighthouse
+- commands/lighthouse/lighthouse-hc
 - lighthouse/lighthouserc.js.example
 
 post_install_actions:
