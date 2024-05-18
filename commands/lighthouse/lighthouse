@@ -6,6 +6,7 @@
 ## Usage: lighthouse 
 ## Example: "ddev lighthouse"
 ## ExecRaw: true
+# export NODE_TLS_REJECT_UNAUTHORIZED='0'
 lhci autorun --collect.outputDir=~/export || true
-sh -c 'tar -cf - *.json *.html' | tar -xvf - -C reports/lighthouse/
-ls -l reports/lighthouse/
+tar -cf - *.json *.html | tar -xvf - -C export/
+ls -l export/

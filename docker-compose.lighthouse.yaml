@@ -2,8 +2,15 @@
 services:
   lighthouse:
     container_name: ddev-${DDEV_SITENAME}-lighthouse
-    image: patrickhulce/lhci-client:latest
-    command: tail -F /dev/null
+    build:
+      context: './lighthouseBuild'
+      args:
+        BASE_IMAGE: patrickhulce/lhci-client:latest
+        username: $USER
+        uid: $DDEV_UID
+        gid: $DDEV_GID
+    image: patrickhulce/lhci-client:latest-${DDEV_SITENAME}-built
+    user:  '$DDEV_UID:$DDEV_GID'
     networks: [default, ddev_default]
     restart: "no"
     shm_size: 1gb
@@ -12,10 +19,12 @@ services:
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
-    entrypoint: [ "docker-entrypoint.sh" ]
+    entrypoint: [ "/entrypoint.sh" ]
     environment:
       DDEV_HOSTNAME: $DDEV_HOSTNAME
+      NODE_EXTRA_CA_CERTS: /mnt/ddev-global-cache/mkcert/rootCA.pem
     volumes:
-    - ../reports/lighthouse:/home/lhci/reports/export
-    - ../tests/functional/lighthouse/lighthouserc.js:/home/lhci/reports/lighthouserc.js
+    - ../reports/lighthouse:/home/$USER/reports/export
+    - ../tests/functional/lighthouse/lighthouserc.js:/home/$USER/reports/lighthouserc.js
     - .:/mnt/ddev_config:ro
+    - ddev-global-cache:/mnt/ddev-global-cache

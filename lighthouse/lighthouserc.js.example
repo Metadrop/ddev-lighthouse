@@ -3,7 +3,7 @@ module.exports = {
     ci: {
       collect: {
         url: [
-          'http://web/'
+          'https://web/'
         ],
         numberOfRuns: 2,
         settings: {

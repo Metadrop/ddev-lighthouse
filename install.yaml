@@ -6,6 +6,7 @@ project_files:
 - commands/lighthouse/lighthouse
 - commands/lighthouse/lighthouse-hc
 - lighthouse/lighthouserc.js.example
+- lighthouseBuild/
 
 post_install_actions:
  - test -d ${DDEV_APPROOT}/tests/functional/lighthouse || mkdir -p ${DDEV_APPROOT}/tests/functional/lighthouse
