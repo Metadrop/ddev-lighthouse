@@ -7,6 +7,13 @@
 ## Example: "ddev lighthouse"
 ## ExecRaw: true
 # export NODE_TLS_REJECT_UNAUTHORIZED='0'
-lhci autorun --collect.outputDir=~/export || true
-tar -cf - *.json *.html | tar -xvf - -C export/
-ls -l export/
+
+CONFIG_FILE=${1:-'lighthouserc.js'}
+
+if [ ! -f ./config/$CONFIG_FILE ]; then
+  echo "Config file ./config/$CONFIG_FILE not found"
+  exit 1
+fi
+
+lhci autorun --config=./config/$CONFIG_FILE --collect.outputDir=~/export
+ls -l ~/export/
