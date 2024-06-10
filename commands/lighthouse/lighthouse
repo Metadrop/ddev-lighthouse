@@ -9,7 +9,7 @@
 # export NODE_TLS_REJECT_UNAUTHORIZED='0'
 
 FOLDER=${1:-'local'}
-FILE=${2:-'lighthouserc.json'}
+FILE=${2:-'lighthouserc.js'}
 
 if [ ! -f ./config/$FOLDER/$FILE ]; then
   echo "Config file ./config/$FOLDER/$FILE not found"
