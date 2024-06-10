@@ -8,12 +8,13 @@
 ## ExecRaw: true
 # export NODE_TLS_REJECT_UNAUTHORIZED='0'
 
-CONFIG_FILE=${1:-'lighthouserc.js'}
+FOLDER=${1:-'local'}
+FILE=${2:-'lighthouserc.json'}
 
-if [ ! -f ./config/$CONFIG_FILE ]; then
-  echo "Config file ./config/$CONFIG_FILE not found"
+if [ ! -f ./config/$FOLDER/$FILE ]; then
+  echo "Config file ./config/$FOLDER/$FILE not found"
   exit 1
 fi
 
-lhci autorun --config=./config/$CONFIG_FILE --collect.outputDir=~/export
-ls -l ~/export/
+lhci autorun --config=./config/$FOLDER/$FILE --collect.outputDir=./export
+ls -l ./export/

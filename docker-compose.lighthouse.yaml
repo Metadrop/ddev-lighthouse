@@ -13,7 +13,7 @@ services:
     user:  '$DDEV_UID:$DDEV_GID'
     networks: [default, ddev_default]
     restart: "no"
-    shm_size: 1gb
+    shm_size: ${LIGHTHOUSE_SHM_SIZE:-1gb}
     cap_add:
       - SYS_ADMIN
     labels:
