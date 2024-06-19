@@ -16,5 +16,5 @@ if [ ! -f ./config/$FOLDER/$FILE ]; then
   exit 1
 fi
 
-lhci autorun --config=./config/$FOLDER/$FILE --collect.outputDir=./export
+lhci autorun --config=./config/$FOLDER/$FILE --upload.outputDir=./export/$FOLDER
 ls -l ./export/
