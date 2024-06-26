@@ -17,4 +17,3 @@ if [ ! -f ./config/$FOLDER/$FILE ]; then
 fi
 
 lhci autorun --config=./config/$FOLDER/$FILE --upload.outputDir=./export/$FOLDER
-ls -l ./export/
