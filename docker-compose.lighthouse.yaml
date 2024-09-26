@@ -11,7 +11,6 @@ services:
         gid: $DDEV_GID
     image: patrickhulce/lhci-client:latest-${DDEV_SITENAME}-built
     user:  '$DDEV_UID:$DDEV_GID'
-    networks: [default, ddev_default]
     restart: "no"
     shm_size: ${LIGHTHOUSE_SHM_SIZE:-1gb}
     cap_add:
@@ -19,12 +18,18 @@ services:
     labels:
       com.ddev.site-name: ${DDEV_SITENAME}
       com.ddev.approot: $DDEV_APPROOT
-    entrypoint: [ "/entrypoint.sh" ]
     environment:
       DDEV_HOSTNAME: $DDEV_HOSTNAME
       NODE_EXTRA_CA_CERTS: /mnt/ddev-global-cache/mkcert/rootCA.pem
+    entrypoint: [ "/entrypoint.sh" ]
     volumes:
-    - ../reports/lighthouse:/home/$USER/reports/export
-    - ../tests/lighthouse:/home/$USER/reports/config
-    - .:/mnt/ddev_config:ro
-    - ddev-global-cache:/mnt/ddev-global-cache
+      - ../reports/lighthouse:/home/$USER/reports/export
+      - ../tests/lighthouse:/home/$USER/reports/config
+      - .:/mnt/ddev_config:ro
+      - ddev-global-cache:/mnt/ddev-global-cache
+    networks: [default, ddev_default]
+    external_links:
+      - ddev-router:${DDEV_SITENAME}.${DDEV_TLD}
+  web:
+    links:
+      - lighthouse
