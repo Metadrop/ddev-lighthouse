@@ -17,13 +17,25 @@ Lighthouse analyzes performance, accessibility, best practices, and more of your
 
 ## Getting Started
 
-Install this addon by running the following command:
+Install this addon:
 
-`ddev get Metadrop/ddev-lighthouse`
+For DDEV v1.23.5 or above run
+
+```sh
+ddev add-on get Metadrop/ddev-lighthouse
+```
+
+For earlier versions of DDEV run
+
+```sh
+ddev get Metadrop/ddev-lighthouse
+```
 
 Once installed, make sure to restart your ddev project:
 
-`ddev restart`
+```sh
+ddev restart
+```
 
 ### Configuration
 
@@ -33,7 +45,9 @@ This addon uses the `tests/functional/lighthouserc.js` configuration file to cus
 
 To execute Lighthouse tests, simply access your ddev environment and run the following command:
 
-`ddev lighthouse`
+```sh
+ddev lighthouse
+```
 
 Lighthouse will generate detailed reports and save them in the `reports/lighthouse` folder of your project.
 
