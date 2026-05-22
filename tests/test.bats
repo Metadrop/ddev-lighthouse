@@ -1,8 +1,10 @@
+#!/usr/bin/env bats
+
 setup() {
   set -eu -o pipefail
   export DIR="$( cd "$( dirname "$BATS_TEST_FILENAME" )" >/dev/null 2>&1 && pwd )/.."
   export TESTDIR=~/tmp/test-lighthouse
-  mkdir -p $TESTDIR  
+  mkdir -p $TESTDIR
   export PROJNAME=test-lighthouse
   export DDEV_NON_INTERACTIVE=true
   ddev delete -Oy ${PROJNAME} >/dev/null 2>&1 || true
@@ -11,10 +13,10 @@ setup() {
   ddev start -y >/dev/null
 }
 
-health_checks() {  
+health_checks() {
   output=$(ddev lighthouse-hc)
   # Check if the output contains "Healthcheck passed!"
-  [[ $output == *"Healthcheck passed"* ]] 
+  [[ $output == *"Healthcheck passed"* ]]
 }
 
 teardown() {
@@ -41,4 +43,3 @@ teardown() {
   ddev restart >/dev/null
   health_checks
 }
-
